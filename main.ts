@@ -1,18 +1,29 @@
-let x = 0
-let y = 0
 input.onButtonPressed(Button.A, function () {
-    while (x < 4) {
-        led.plot(x, 0)
-        x = 2
-        led.unplot(x, 0)
-        x += x + -1
+    led.unplot(x, y)
+    x += -1
+    if (x < 0) {
+        x = 4
+        y += -1
+        if (y < 0) {
+            y = 4
+        }
     }
+    led.plot(x, y)
 })
 input.onButtonPressed(Button.B, function () {
-    while (y < 4) {
-        led.plot(0, y)
-        y = 1
-        led.unplot(0, y)
-        y += y + 1
+    led.unplot(x, y)
+    x += 1
+    if (x > 4) {
+        x = 0
+        y += 1
+        if (y > 4) {
+            y = 0
+        }
     }
+    led.plot(x, y)
 })
+let y = 0
+let x = 0
+x = 2
+y = 2
+led.plot(x, y)
